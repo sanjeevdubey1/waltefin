@@ -77,7 +77,7 @@ export const HeroSection = () => {
 
       {/* Banks Logos Section */}
       <section className="py-10 bg-gray-50">
-        <h2 className="text-center text-3xl font-semibold mb-8">Our Partner Banks</h2>
+        <h2 className="text-center text-3xl font-semibold mb-8">We are  Partner with all the Banks</h2>
         <div className="flex flex-wrap justify-center items-center gap-8 px-6">
           {bankLogos.map((bank) => (
             <img
@@ -86,6 +86,7 @@ export const HeroSection = () => {
               alt={bank.name}
               className="h-16 object-contain hover:grayscale-0 transition duration-300"
               title={bank.name}
+              
             />
           ))}
         </div>
@@ -138,6 +139,11 @@ export const HeroSection = () => {
           ))}
         </div>
       </section>
+      <footer className=" bg-amber-50 text-center text-sm text-gray-500 py-4">
+  © 2025 FincopX. All rights reserved.
+</footer>
+
     </div>
+    
   );
 };

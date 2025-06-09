@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
 export const EmiCalculator = () => {
   const [amount, setAmount] = useState('');
   const [interest, setInterest] = useState('');
@@ -95,12 +95,21 @@ export const EmiCalculator = () => {
                 </div>
               </div>
 
+              <div className='flex flex-col'>
+
+          <Link
+        to="/terms"
+        className="text-blue-600 underline hover:text-blue-800 transition text-xs mt-3 pb-1.5"
+        >
+      Read Terms & Conditions &copy; 
+      </Link>
               <button
                 onClick={calculateEMI}
-                className="mt-6 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded transition"
-              >
+                className="mt-1 w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 rounded transition"
+                >
                 Calculate EMI
               </button>
+                </div>
 
               {emi && (
                 <div className="mt-6 text-center">

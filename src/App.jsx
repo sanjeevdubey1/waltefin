@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HeroSection } from './components/HeroSection';
 import { LoanForm } from './components/LoanForm';
 import { EmiCalculator } from './components/EMICalculator ';
+import TermsAndServices from './pages/TermsAndServices ';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Route path="/" element={<HeroSection />} />
         <Route path="/apply" element={<LoanForm />} />
         <Route path='/emi-calculator' element={<EmiCalculator/>} /> 
+        <Route path='/terms' element={<TermsAndServices/>}/>
       </Routes>
     </Router>
   );

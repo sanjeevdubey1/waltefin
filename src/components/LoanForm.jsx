@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { Link } from 'react-router-dom';
+import { FileText } from 'lucide-react';
 const phoneRegex = /^[6-9]\d{9}$/;
 const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
 const aadharRegex = /^\d{12}$/;
@@ -248,14 +249,14 @@ export const LoanForm = () => {
 
               {/* PAN Number */}
               <div>
-                <label className="block text-sm mb-1" htmlFor="pan">PAN Number</label>
+                <label className="block text-sm mb-1" htmlFor="pan">PAN Number (Optional)</label>
                 <input
                   id="pan"
                   type="text"
                   name="pan"
                   placeholder="ABCDE1234F"
                   maxLength={10}
-                  required
+                 
                   value={formData.pan}
                   onChange={handleChange}
                   className={`w-full px-3 py-2 border rounded text-sm uppercase ${errors.pan ? 'border-red-500' : ''}`}
@@ -281,7 +282,13 @@ export const LoanForm = () => {
             </form>
 
             {/* Submit button */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center flex-col  align-middle mt-4">
+                <Link
+        to="/terms"
+        className="text-blue-600 underline hover:text-blue-800 transition text-xs pb-1"
+      >
+      Read Terms & Conditions &copy; 
+      </Link>
               <button
                 type="submit"
                 onClick={handleSubmit}
@@ -314,6 +321,8 @@ export const LoanForm = () => {
                 )}
                 Submit Enquiry
               </button>
+        
+     
             </div>
           </motion.div>
         )}
@@ -340,6 +349,7 @@ export const LoanForm = () => {
               >
                 Close
               </button>
+              <link rel="stylesheet" href="/termc" title='Tearm & condition' />
             </motion.div>
           </motion.div>
         )}
