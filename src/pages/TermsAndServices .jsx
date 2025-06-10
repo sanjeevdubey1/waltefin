@@ -6,17 +6,17 @@ const TermsAndServices = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative max-w-4xl mx-auto p-6 text-sm text-gray-800">
+    <div className="relative  mx-auto p-6 text-sm text-gray-800 bg-gradient-to-br from-indigo-100 via-indigo-50 to-white px-4 py-2  flex items-center justify-center">
       {/* Close Button using Lucide Icon */}
       <button
         onClick={() => navigate(-1)}
-        className="absolute top-4 right-4 text-gray-500 hover:text-red-500"
+        className="absolute top-4 left-4 text-gray-500 hover:text-red-500"
         title="Close"
       >
         <X className="w-6 h-6" />
       </button>
 
-  <div className="max-w-4xl mx-auto p-6 text-gray-800">
+  <div className="max-w-7xl mx-auto p-6 text-gray-800 ">
       <h1 className="text-3xl font-bold mb-6 text-indigo-600">Terms and Conditions</h1>
 
       <section className="mb-6">
