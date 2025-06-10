@@ -1,7 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { HeroSection } from './components/HeroSection';
 import { LoanForm } from './components/LoanForm';
-import { EmiCalculator } from './components/EMICalculator ';
+import { EmiCalculator } from './components/EmiCalculator ';
 import TermsAndServices from './pages/TermsAndServices ';
 
 function App() {
