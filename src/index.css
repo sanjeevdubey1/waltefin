@@ -1,8 +1,11 @@
 @import "tailwindcss";
-@import url('https://fonts.googleapis.com/css2?family=Varela&display=swap');
 
 
-body{
-    font-family:varel ;
+
+html {
+  scroll-behavior: smooth;
 }
 
+body {
+     background: linear-gradient(to bottom right, #f0f9ff, #fdfcfb, #ffe0e0);
+}

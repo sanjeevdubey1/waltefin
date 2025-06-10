@@ -3,10 +3,12 @@ import { HeroSection } from './components/HeroSection';
 import { LoanForm } from './components/LoanForm';
 import { EmiCalculator } from './components/EmiCalculator ';
 import TermsAndServices from './pages/TermsAndServices ';
+import { Header } from './components/Header';
 
 function App() {
   return (
     <Router>
+    
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/apply" element={<LoanForm />} />
