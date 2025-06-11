@@ -1,6 +1,6 @@
 import React from 'react'
 import HDFC from '../assets/hdfc.jpg';
-import KOTAK from '../assets/Kotak.jpg';
+import KOTAK from '../assets/kotak.jpg'
 import IDFC from '../assets/idfc.jpg';
 import IDBI from '../assets/idbi.jpg';
 import ANDRO from '../assets/andro.png';
