@@ -3,9 +3,9 @@ import FCX from '../assets/FCX.png'; // <-- Update path if needed
 
 const AboutUs = () => {
   return (
-    <section className="min-h-screen bg-black px-6 py-12">
+    <section className="min-h-screen w-auto bg-black  py-12">
       {/* Logo and Heading */}
-      <div className="max-w-6xl mx-auto flex items-center space-x-6 mb-10">
+      <div className="max-w-6xl mx-auto p-8 flex items-center space-x-6 mb-10">
         <div className=" p-2 rounded-full">
           <img
             src={FCX}
@@ -15,12 +15,12 @@ const AboutUs = () => {
         </div>
         <div>
           <h1 className="text-3xl font-bold text-yellow-600">About Fincopx</h1>
-          <p className="text-gray-400 text-md mt-1">Your Trusted Loan and Insurance Partner</p>
+          <p className="text-pink-100 text-md mt-1">Your Trusted Loan and Insurance Partner</p>
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-4xl mx-auto bg-pink-100 rounded-2xl shadow-md p-8 text-gray-700 leading-relaxed">
+      <div className="max-w-4xl mx-auto bg-cyan-600 rounded-2xl shadow-md p-8 text-pink-100 leading-relaxed">
         <p className="mb-4">
           At <strong>Fincopx</strong>, we specialize in providing a wide range of loan services tailored to meet the financial needs of individuals and businesses. From personal loans to home loans, vehicle loans to business funding—we help connect our clients to the right financial solutions.
         </p>

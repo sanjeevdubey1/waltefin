@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
 @import "tailwindcss";
 
 
 
-html {
+html ,body {
   scroll-behavior: smooth;
+  background-color: black;
+  font-family: "Mona Sans", sans-serif;
+  color: aliceblue;
+
 }
 
-body {
-     background: linear-gradient(to bottom right, #f0f9ff, #fdfcfb, #ffe0e0);
-}
+

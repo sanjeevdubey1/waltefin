@@ -18,7 +18,7 @@ const Partners = () => {
   return (
     <>
         {/* Banks Logos Section */}
-        <section className="py-10 bg-gray-50">
+        <section className="py-10 ">
           <h2 className="text-center text-3xl font-semibold mb-8">We are Partner with all the Banks</h2>
           <div className="flex flex-wrap justify-center items-center gap-8 px-6">
             {bankLogos.map((bank) => (
@@ -26,7 +26,7 @@ const Partners = () => {
               key={bank.name}
               src={bank.url}
               alt={bank.name}
-              className="h-16 object-contain hover:grayscale-0 transition duration-300"
+              className="h-16 object-contain hover:grayscale-0 transition duration-300 rounded-full "
               title={bank.name}
               />
             ))}
@@ -34,7 +34,7 @@ const Partners = () => {
         </section>
   
         {/* Channel Partner Section */}
-        <section className="py-10 bg-white px-6">
+        <section className="py-10  px-6">
           <h2 className="text-center text-3xl font-semibold mb-4">Our Channel Partner</h2>
           <div className="flex flex-col items-center">
             <img
@@ -42,8 +42,8 @@ const Partners = () => {
               alt="Andromeda"
               className="h-20 mb-4 object-contain"
               />
-            <p className="text-gray-600 max-w-xl text-center">
-              We are proud to be associated with <span className="font-semibold text-black">Andromeda</span>,
+            <p className="text-white max-w-xl text-center">
+              We are proud to be associated with <span className="font-semibold text-yellow-600">Andromeda</span>,
               India’s largest loan distributor, enabling access to top banks and unmatched loan deals.
             </p>
           </div>

@@ -3,8 +3,7 @@ import { HeroSection } from './components/HeroSection';
 import { LoanForm } from './components/LoanForm';
 import { EmiCalculator } from './components/EmiCalculator ';
 import TermsAndServices from './pages/TermsAndServices ';
-import { Header } from './components/Header';
-import AboutUs from './pages/Aboutus';
+import AboutUs from './pages/AboutUs'
 
 function App() {
   return (

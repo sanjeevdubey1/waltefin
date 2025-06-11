@@ -108,7 +108,7 @@ export const LoanForm = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-br from-indigo-100 via-indigo-50 to-white px-4 py-2 relative flex items-center justify-center">
+    <div className="h-screen w-screen bg-gradient-to-br from-black via-purple-200 to-cyan-200 px-4 py-2 relative flex items-center justify-center">
 
       {/* Close button for form */}
       {visible && (
@@ -125,7 +125,7 @@ export const LoanForm = () => {
         {/* The form */}
         {visible && (
           <motion.div
-            className="w-full max-w-3xl bg-white shadow-2xl rounded-xl p-6 h-[90vh] flex flex-col justify-between"
+            className="w-full max-w-3xl bg-white shadow-2xl rounded-xl p-6 h-[90vh] flex flex-col justify-between text-black"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.4 } }}
@@ -256,7 +256,7 @@ export const LoanForm = () => {
                   name="pan"
                   placeholder="ABCDE1234F"
                   maxLength={10}
-                 
+                 required
                   value={formData.pan}
                   onChange={handleChange}
                   className={`w-full px-3 py-2 border rounded text-sm uppercase ${errors.pan ? 'border-red-500' : ''}`}
@@ -336,13 +336,13 @@ export const LoanForm = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white rounded-lg p-8 max-w-md text-center shadow-lg"
+              className="bg-gray-200 rounded-lg p-8 max-w-md text-center shadow-lg"
               initial={{ scale: 0.8 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.8 }}
             >
               <h3 className="text-2xl font-semibold mb-4 text-green-600">Thank you!</h3>
-              <p className="mb-6">Your form is submitted successfully.</p>
+              <p className="mb-6 text-black">Your form is submitted successfully.</p>
               <button
                 onClick={handleSuccessClose}
                 className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-2 rounded"
