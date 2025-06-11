@@ -9,7 +9,7 @@ const TermsAndServices = () => {
     <div className="relative  mx-auto p-6 text-sm text-gray-800 bg-gradient-to-br from-indigo-100 via-indigo-50 to-white px-4 py-2  flex items-center justify-center">
       {/* Close Button using Lucide Icon */}
       <button
-        onClick={() => navigate('/')}
+        onClick={() => navigate(-1)}
         className="absolute top-4 left-4 text-gray-500 hover:text-red-500"
         title="Close"
       >

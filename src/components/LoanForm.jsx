@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { FileText } from 'lucide-react';
+
 const phoneRegex = /^[6-9]\d{9}$/;
 const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
 const aadharRegex = /^\d{12}$/;
@@ -14,7 +13,6 @@ export const LoanForm = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
-
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -36,7 +34,6 @@ export const LoanForm = () => {
     if (!formData.occupation.trim()) errs.occupation = 'Occupation is required';
     if (!panRegex.test(formData.pan.toUpperCase())) errs.pan = 'Invalid PAN format';
     if (formData.aadhar && !aadharRegex.test(formData.aadhar)) errs.aadhar = 'Invalid Aadhar number';
-
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -45,18 +42,14 @@ export const LoanForm = () => {
     const { name, value } = e.target;
     if (name === 'pan') {
       setFormData({ ...formData, [name]: value.toUpperCase() });
-    } else if (name === 'phone' || name === 'aadhar') {
-      if (/^\d*$/.test(value)) {
-        setFormData({ ...formData, [name]: value });
-      }
-    } else if (name === 'age' || name === 'amount') {
+    } else if (['phone', 'aadhar', 'age', 'amount'].includes(name)) {
       if (/^\d*$/.test(value)) {
         setFormData({ ...formData, [name]: value });
       }
     } else {
       setFormData({ ...formData, [name]: value });
     }
-    setErrors(prev => ({ ...prev, [name]: undefined }));
+    setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
   const handleSubmit = async (e) => {
@@ -72,8 +65,8 @@ export const LoanForm = () => {
       });
 
       if (response.ok) {
-        setVisible(false);  // Close the form immediately
-        setSubmitted(true); // Show success screen
+        setVisible(false);
+        setSubmitted(true);
         setFormData({
           name: '',
           phone: '',
@@ -97,9 +90,7 @@ export const LoanForm = () => {
 
   const handleClose = () => {
     setVisible(false);
-    setTimeout(() => {
-      navigate('/');
-    }, 400);
+    setTimeout(() => navigate('/'), 400);
   };
 
   const handleSuccessClose = () => {
@@ -108,9 +99,7 @@ export const LoanForm = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-gradient-to-br from-black via-purple-200 to-cyan-200 px-4 py-2 relative flex items-center justify-center">
-
-      {/* Close button for form */}
+    <div className="min-h-screen w-full bg-gradient-to-br from-black via-purple-200 to-cyan-200 px-4 py-4 relative flex items-center justify-center overflow-auto">
       {visible && (
         <button
           onClick={handleClose}
@@ -122,10 +111,9 @@ export const LoanForm = () => {
       )}
 
       <AnimatePresence>
-        {/* The form */}
         {visible && (
           <motion.div
-            className="w-full max-w-3xl bg-white shadow-2xl rounded-xl p-6 h-[90vh] flex flex-col justify-between text-black"
+            className="w-full max-w-3xl bg-white shadow-2xl rounded-xl p-6 flex flex-col justify-between text-black"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.4 } }}
@@ -135,63 +123,32 @@ export const LoanForm = () => {
               <h2 className="text-xl font-bold mb-4 text-center text-indigo-600">Loan Enquiry Form</h2>
             </div>
 
-            <form
-              onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow"
-              noValidate
-            >
-              {/* Inputs... same as before */}
-              {/* Full Name */}
-              <div>
-                <label className="block text-sm mb-1" htmlFor="name">Full Name</label>
-                <input
-                  id="name"
-                  type="text"
-                  name="name"
-                  placeholder="Enter your full name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.name ? 'border-red-500' : ''}`}
-                />
-                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
-              </div>
-              {/* Phone Number */}
-              <div>
-                <label className="block text-sm mb-1" htmlFor="phone">Phone Number</label>
-                <input
-                  id="phone"
-                  type="tel"
-                  name="phone"
-                  placeholder="10-digit mobile number"
-                  required
-                  maxLength={10}
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.phone ? 'border-red-500' : ''}`}
-                />
-                {errors.phone && <p className="text-red-500 text-xs mt-1">{errors.phone}</p>}
-              </div>
+            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow" noValidate>
+              {[
+                { label: 'Full Name', name: 'name', type: 'text', placeholder: 'Enter your full name' },
+                { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '10-digit mobile number', maxLength: 10 },
+                { label: 'Age', name: 'age', type: 'number', placeholder: 'Your age (18-100)' },
+                { label: 'Loan Amount', name: 'amount', type: 'number', placeholder: 'Enter loan amount' },
+                { label: 'PAN Number (Optional)', name: 'pan', type: 'text', placeholder: 'ABCDE1234F', maxLength: 10 },
+                { label: 'Aadhar Number (Optional)', name: 'aadhar', type: 'text', placeholder: '12-digit Aadhar number', maxLength: 12 },
+              ].map(({ label, name, type, placeholder, maxLength }) => (
+                <div key={name}>
+                  <label className="block text-sm mb-1" htmlFor={name}>{label}</label>
+                  <input
+                    id={name}
+                    type={type}
+                    name={name}
+                    placeholder={placeholder}
+                    value={formData[name]}
+                    required={name !== 'aadhar'}
+                    maxLength={maxLength}
+                    onChange={handleChange}
+                    className={`w-full px-3 py-2 border rounded text-sm ${errors[name] ? 'border-red-500' : ''}`}
+                  />
+                  {errors[name] && <p className="text-red-500 text-xs mt-1">{errors[name]}</p>}
+                </div>
+              ))}
 
-              {/* Age */}
-              <div>
-                <label className="block text-sm mb-1" htmlFor="age">Age</label>
-                <input
-                  id="age"
-                  type="number"
-                  name="age"
-                  placeholder="Your age (18-100)"
-                  required
-                  min={18}
-                  max={100}
-                  value={formData.age}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.age ? 'border-red-500' : ''}`}
-                />
-                {errors.age && <p className="text-red-500 text-xs mt-1">{errors.age}</p>}
-              </div>
-
-              {/* Loan Type */}
               <div>
                 <label className="block text-sm mb-1" htmlFor="loanType">Loan Type</label>
                 <select
@@ -210,90 +167,34 @@ export const LoanForm = () => {
                 {errors.loanType && <p className="text-red-500 text-xs mt-1">{errors.loanType}</p>}
               </div>
 
-              {/* Loan Amount */}
               <div>
-                <label className="block text-sm mb-1" htmlFor="amount">Loan Amount</label>
-                <input
-                  id="amount"
-                  type="number"
-                  name="amount"
-                  placeholder="Enter loan amount"
+                <label className="block text-sm mb-1" htmlFor="occupation">Occupation</label>
+                <select
+                  id="occupation"
+                  name="occupation"
                   required
-                  min={0}
-                  value={formData.amount}
+                  value={formData.occupation}
                   onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.amount ? 'border-red-500' : ''}`}
-                />
-                {errors.amount && <p className="text-red-500 text-xs mt-1">{errors.amount}</p>}
-              </div>
-
-             {/* Occupation (Dropdown) */}
-<div>
-  <label className="block text-sm mb-1" htmlFor="occupation">Occupation</label>
-  <select
-    id="occupation"
-    name="occupation"
-    required
-    value={formData.occupation}
-    onChange={handleChange}
-    className={`w-full px-3 py-2 border rounded text-sm ${errors.occupation ? 'border-red-500' : ''}`}
-  >
-    <option value="">Select occupation</option>
-    <option value="Salaried">Salaried</option>
-    <option value="Business">Business</option>
-    <option value="Others">Others</option>
-  </select>
-  {errors.occupation && <p className="text-red-500 text-xs mt-1">{errors.occupation}</p>}
-</div>
-
-
-              {/* PAN Number */}
-              <div>
-                <label className="block text-sm mb-1" htmlFor="pan">PAN Number (Optional)</label>
-                <input
-                  id="pan"
-                  type="text"
-                  name="pan"
-                  placeholder="ABCDE1234F"
-                  maxLength={10}
-                 required
-                  value={formData.pan}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm uppercase ${errors.pan ? 'border-red-500' : ''}`}
-                />
-                {errors.pan && <p className="text-red-500 text-xs mt-1">{errors.pan}</p>}
-              </div>
-
-              {/* Aadhar Number */}
-              <div>
-                <label className="block text-sm mb-1" htmlFor="aadhar">Aadhar Number (Optional)</label>
-                <input
-                  id="aadhar"
-                  type="text"
-                  name="aadhar"
-                  placeholder="12-digit Aadhar number"
-                  maxLength={12}
-                  value={formData.aadhar}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.aadhar ? 'border-red-500' : ''}`}
-                />
-                {errors.aadhar && <p className="text-red-500 text-xs mt-1">{errors.aadhar}</p>}
+                  className={`w-full px-3 py-2 border rounded text-sm ${errors.occupation ? 'border-red-500' : ''}`}
+                >
+                  <option value="">Select occupation</option>
+                  <option value="Salaried">Salaried</option>
+                  <option value="Business">Business</option>
+                  <option value="Others">Others</option>
+                </select>
+                {errors.occupation && <p className="text-red-500 text-xs mt-1">{errors.occupation}</p>}
               </div>
             </form>
 
-            {/* Submit button */}
-            <div className="flex justify-center flex-col  align-middle mt-4">
-                <Link
-        to="/terms"
-        className="text-blue-600 underline hover:text-blue-800 transition text-xs pb-1"
-      >
-      Read Terms & Conditions &copy; 
-      </Link>
+            <div className="flex flex-col items-center gap-2 mt-4 w-full">
+              <Link to="/terms" className="text-blue-600 underline hover:text-blue-800 transition text-xs">
+                Read Terms & Conditions ©
+              </Link>
               <button
                 type="submit"
                 onClick={handleSubmit}
                 disabled={loading}
-                className={`bg-yellow-500 text-black px-8 py-2 rounded font-semibold hover:bg-yellow-600 transition text-sm flex items-center justify-center gap-2 ${
+                className={`w-full sm:w-auto bg-yellow-500 text-black px-8 py-2 rounded font-semibold hover:bg-yellow-600 transition text-sm flex items-center justify-center gap-2 ${
                   loading ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
               >
@@ -304,30 +205,16 @@ export const LoanForm = () => {
                     fill="none"
                     viewBox="0 0 24 24"
                   >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    />
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-                    />
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                   </svg>
                 )}
                 Submit Enquiry
               </button>
-        
-     
             </div>
           </motion.div>
         )}
 
-        {/* Success screen */}
         {submitted && (
           <motion.div
             className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50"
@@ -349,7 +236,6 @@ export const LoanForm = () => {
               >
                 Close
               </button>
-              <link rel="stylesheet" href="/termc" title='Tearm & condition' />
             </motion.div>
           </motion.div>
         )}
