@@ -1,13 +1,13 @@
 import React from 'react';
-import { Briefcase, Home, User, Zap, Percent } from 'lucide-react';
+import { Briefcase, Home, User, Building, ShieldCheck } from 'lucide-react';
 
 const Services = () => {
   const services = [
     { icon: <Home size={32} />, title: 'Property Loans' },
     { icon: <Briefcase size={32} />, title: 'Business Loans' },
     { icon: <User size={32} />, title: 'Personal Loans' },
-    { icon: <Zap size={32} />, title: 'Quick Loan Approvals' },
-    { icon: <Percent size={32} />, title: 'Low Interest Rates' },
+    { icon: <Building size={32} />, title: 'Loan Against Property (LAP)' },
+    { icon: <ShieldCheck size={32} />, title: 'Insurance' },
   ];
 
   return (

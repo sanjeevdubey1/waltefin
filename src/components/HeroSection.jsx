@@ -18,7 +18,7 @@ export const HeroSection = () => {
 
       <Header/>
       {/* Hero Banner */}
-      <div className="relative bg-[url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2022&auto=format&fit=crop')] bg-cover bg-center h-screen w-full">
+      <div id='hero' className="relative bg-[url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2022&auto=format&fit=crop')] bg-cover bg-center h-screen w-full">
         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-6">
           <h1 className="text-white text-5xl font-bold mb-4">Welcome to Fincopx</h1>
           <p className="text-white text-xl mb-8 max-w-3xl font-mono">
