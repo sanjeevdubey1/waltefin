@@ -31,7 +31,7 @@ export const EmiCalculator = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 via-white to-indigo-50 px-4 py-8 relative">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-purple-200 to-cyan-200 px-4 py-8 relative">
 
       {/* Close Button at top-left of screen */}
       <button
@@ -50,7 +50,7 @@ export const EmiCalculator = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.4 } }}
           >
-            <div className="bg-white p-8 rounded-lg shadow-xl relative">
+            <div className="bg-black p-8 rounded-lg shadow-xl relative">
               
               {/* Company Name */}
               <h1 className="text-3xl font-bold text-yellow-600 text-center mb-1 tracking-wide">

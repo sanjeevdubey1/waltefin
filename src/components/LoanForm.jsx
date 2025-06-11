@@ -99,7 +99,7 @@ export const LoanForm = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-black via-purple-200 to-cyan-200 px-4 py-4 relative flex items-center justify-center overflow-auto">
+    <div className="min-h-screen w-full bg-gradient-to-br from-black via-cyan-200 to-black px-4 py-4 relative flex items-center justify-center overflow-auto">
       {visible && (
         <button
           onClick={handleClose}
@@ -113,7 +113,7 @@ export const LoanForm = () => {
       <AnimatePresence>
         {visible && (
           <motion.div
-            className="w-full max-w-3xl bg-white shadow-2xl rounded-xl p-6 flex flex-col justify-between text-black"
+            className="w-full max-w-3xl bg-black shadow-2xl rounded-xl p-6 flex flex-col justify-between text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.4 } }}

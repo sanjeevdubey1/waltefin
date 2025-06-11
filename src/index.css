@@ -9,6 +9,7 @@ html ,body {
   background-color: black;
   font-family: "Mona Sans", sans-serif;
   color: aliceblue;
+scrollbar-width: none; /* Firefox */
 
 }
 

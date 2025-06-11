@@ -15,10 +15,10 @@ export const HeroSection = () => {
       {/* Hero Banner */}
       <div
         id="hero"
-        className="relative bg-[url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2022&auto=format&fit=crop')] bg-cover bg-center h-screen w-full"
+        className="relative bg-[url('https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-screen w-full"
       >
         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-4">Welcome to Fincopx</h1>
+          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-4">Welcome to FinCopX</h1>
           <p className="text-white text-base sm:text-xl mb-8 max-w-3xl font-mono">
             Your Trusted Partner for Property, Business & Personal Loans
           </p>
@@ -46,7 +46,7 @@ export const HeroSection = () => {
       <Services />
 
       {/* Footer */}
-      <footer className="bg-amber-50 text-center text-sm text-gray-500 py-4">
+      <footer className="bg-cyan-50 text-center text-sm text-gray-500 py-4">
         © 2025 FincopX. All rights reserved.
       </footer>
     </div>

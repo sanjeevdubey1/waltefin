@@ -6,11 +6,12 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 shadow">
-      <div className="max-w-[84rem] rounded-3xl mt-2.5 mb-2.5 bg-amber-50 mx-auto px-4 py-2 flex justify-between items-center h-[80px]">
+    <header className="sticky top-0 z-50 ">
+      <div className="max-w-[84rem] rounded-3xl mt-2.5 mb-2.5 bg-cyan-50 mx-auto px-4 py-2 flex justify-between items-center h-[75px]    shadow-sm shadow-cyan-100 
+    hover:shadow-md hover:shadow-cyan-400 transition duration-300 ease-in-out">
 
         {/* Logo Box */}
-        <div className="bg-black rounded-3xl h-[60px] flex items-center justify-center">
+        <div className="bg-black rounded-3xl h-[60px] flex items-center justify-center ">
           <img
             src={FCX}
             alt="Fincopx Logo"
