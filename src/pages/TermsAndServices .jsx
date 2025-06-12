@@ -6,7 +6,7 @@ const TermsAndServices = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="relative  mx-auto p-6 text-sm text-gray-800 bg-gradient-to-br from-indigo-100 via-indigo-50 to-white px-4 py-2  flex items-center justify-center">
+    <div className="relative  mx-auto p-6 text-sm text-white bg-black px-4 py-2  flex items-center justify-center">
       {/* Close Button using Lucide Icon */}
       <button
         onClick={() => navigate(-1)}
@@ -16,7 +16,7 @@ const TermsAndServices = () => {
         <X className="w-6 h-6" />
       </button>
 
-  <div className="max-w-7xl mx-auto p-6 text-gray-800 ">
+  <div className="max-w-7xl mx-auto p-6 text-white ">
       <h1 className="text-3xl font-bold mb-6 text-indigo-600">Terms and Conditions</h1>
 
       <section className="mb-6">

@@ -90,7 +90,7 @@ export const LoanForm = () => {
 
   const handleClose = () => {
     setVisible(false);
-    setTimeout(() => navigate('/'), 400);
+    setTimeout(() => navigate('/'), 300);
   };
 
   const handleSuccessClose = () => {
@@ -116,7 +116,7 @@ export const LoanForm = () => {
             className="w-full max-w-3xl bg-black shadow-2xl rounded-xl p-6 flex flex-col justify-between text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.4 } }}
+            exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.3 } }}
           >
             <div>
               <h1 className="text-3xl font-bold text-yellow-600 text-center mb-1 tracking-wide">Fincopx</h1>

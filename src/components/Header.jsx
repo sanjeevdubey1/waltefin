@@ -6,9 +6,9 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 ">
-      <div className="max-w-[84rem] rounded-3xl mt-2.5 mb-2.5 bg-cyan-50 mx-auto px-4 py-2 flex justify-between items-center h-[75px]    shadow-sm shadow-cyan-100 
-    hover:shadow-md hover:shadow-cyan-400 transition duration-300 ease-in-out">
+    <header className="sticky mt-2.5 top-0 z-50 ">
+      <div className="max-w-[84rem] rounded-3xl  mb-2.5 bg-cyan-50/35 mx-auto px-4 py-2 flex justify-between items-center h-[75px]    shadow-sm shadow-cyan-100 
+    hover:shadow-md hover:shadow-cyan-200 transition duration-300 ease-in-out">
 
         {/* Logo Box */}
         <div className="bg-black rounded-3xl h-[60px] flex items-center justify-center ">
@@ -27,7 +27,7 @@ export const Header = () => {
               <a
                 key={text}
                 href={hrefs[index]}
-                className="text-black font-semibold hover:text-pink-100 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-black p-2 px-3 rounded-3xl"
+                className="text-white bg-transparent  font-semibold hover:text-pink-100 transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-black p-2 px-3 rounded-3xl"
               >
                 {text}
               </a>
@@ -54,6 +54,7 @@ export const Header = () => {
         <a href="#services" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">Services</a>
         <a href="/aboutus" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">About Us</a>
         <a href="/terms" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">T&amp;C</a>
+        <a className="block text-pink-100 py-2 hover:text-yellow-500 font-bold" href="#contactus">Contact Us</a>
       </div>
     </header>
   );
