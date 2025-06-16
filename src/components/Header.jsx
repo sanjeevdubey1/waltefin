@@ -6,8 +6,8 @@ export const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <header className="sticky mt-2.5 top-0 z-50 ">
-      <div className="max-w-[84rem] rounded-3xl  mb-2.5 bg-cyan-50/35 mx-auto px-4 py-2 flex justify-between items-center h-[75px]    shadow-sm shadow-cyan-100 
+    <header className="sticky mr-2 ml-2 top-0 z-50 ">
+      <div className="max-w-[84rem] rounded-bl-3xl rounded-br-3xl   mb-2.5 bg-black mx-auto px-4 py-2 flex justify-between items-center h-[75px]    shadow-sm shadow-cyan-100 
     ">
 
         {/* Logo Box */}
@@ -22,7 +22,7 @@ export const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
           {['Home', 'Services', 'About Us', 'Contact Us' , 'T&C'].map((text, index) => {
-            const to = ['/', '/service', '/aboutus', '/contactus', '/terms' ];
+            const to = ['/', '/service', '/about', '/contactus', '/terms' ];
             return (
               <Link
                 key={text}

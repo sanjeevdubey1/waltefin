@@ -26,10 +26,10 @@ export const HeroSection = () => {
       >
         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-6">
        <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight">
-  Your Trusted Loan DSA in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
+  Your Trusted Home Loan DSA in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
 </h1>
 <p className="text-yellow-100 text-lg sm:text-xl mb-4 font-medium">
-  Personal, Business & Home Loans through top banks and NBFCs.
+  Personal, Business & Home Loan through top banks and NBFCs.
 </p>
 <p className="text-white text-base sm:text-lg mb-8 max-w-2xl font-mono">
   Serving Navi Mumbai, Kharghar, Kamothe & Panvel. No middlemen. No false claims.
