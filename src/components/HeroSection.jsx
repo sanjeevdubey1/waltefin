@@ -7,12 +7,12 @@ import Partners from './Partners';
 export const HeroSection = () => {
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (window.location.hash) {
-      window.scrollTo({ top: 0, behavior: 'auto' });
-      history.replaceState(null, '', window.location.pathname);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (window.location.hash) {
+  //     window.scrollTo({ top: 0, behavior: 'auto' });
+  //     history.replaceState(null, '', window.location.pathname);
+  //   }
+  // }, []);
 
   return (
     <div>
@@ -25,15 +25,16 @@ export const HeroSection = () => {
         className="relative bg-[url('https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center h-screen w-full"
       >
         <div className="absolute inset-0 bg-black/60 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight">
-            Loans Made Simple with <span className="text-yellow-400">FinCopX</span>
-          </h1>
-          <p className="text-yellow-100 text-lg sm:text-xl mb-4 font-medium">
-            Simplifying your path to Property, Business & Personal Loans
-          </p>
-          <p className="text-white text-base sm:text-lg mb-8 max-w-2xl font-mono">
-            Get expert guidance and access to multiple lenders under one roof. No false promises—just clarity and assistance.
-          </p>
+       <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight">
+  Your Trusted Loan DSA in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
+</h1>
+<p className="text-yellow-100 text-lg sm:text-xl mb-4 font-medium">
+  Personal, Business & Home Loans through top banks and NBFCs.
+</p>
+<p className="text-white text-base sm:text-lg mb-8 max-w-2xl font-mono">
+  Serving Navi Mumbai, Kharghar, Kamothe & Panvel. No middlemen. No false claims.
+</p>
+
           <div className="flex flex-col sm:flex-row gap-4">
             <button
               onClick={() => navigate('/apply')}
@@ -42,7 +43,7 @@ export const HeroSection = () => {
               Apply Now
             </button>
              <a
-              href="tel:+919876543210"
+              href="tel:+918424020461"
               className="bg-transparent border border-yellow-400 text-yellow-400 hover:bg-yellow-500 hover:text-black font-semibold px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base transition"
             >
               Talk to Us
@@ -72,16 +73,16 @@ export const HeroSection = () => {
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6">
           <a
-            href="tel:+919876543210"
+            href="tel:+918424020461"
             className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-3 px-6 rounded-full shadow-lg transition"
           >
-            Call Now: +91 98765 43210
+            Call Now: +91 8424020461
           </a>
           <a
-            href="mailto:contact@fincopx.com"
+            href="mailto:fincopx@gmail.com"
             className="bg-white hover:bg-gray-100 text-black font-semibold py-3 px-6 rounded-full border border-gray-300 shadow transition"
           >
-            Email Us: contact@fincopx.com
+            Email Us: fincopx@gmail.com
           </a>
         </div>
         <p className="text-sm text-gray-500">We’re available Mon–Sat, 10am–7pm</p>

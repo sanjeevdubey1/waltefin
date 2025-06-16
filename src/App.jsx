@@ -3,7 +3,8 @@ import { HeroSection } from './components/HeroSection';
 import { LoanForm } from './components/LoanForm';
 import { EmiCalculator } from './components/EmiCalculator ';
 import TermsAndServices from './pages/TermsAndServices ';
-import AboutUs from './pages/AboutUs'
+import AboutUs from './pages/Aboutus';
+import { Service } from './pages/Service';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path='/emi-calculator' element={<EmiCalculator/>} /> 
         <Route path='/terms' element={<TermsAndServices/>}/>
         <Route path='/aboutus' element={<AboutUs/>}/>
+        <Route path='/service' element={<Service/>}/>
       </Routes>
     </Router>
   );

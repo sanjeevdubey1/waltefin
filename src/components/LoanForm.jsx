@@ -129,7 +129,7 @@ export const LoanForm = () => {
                 { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '10-digit mobile number', maxLength: 10 },
                 { label: 'Age', name: 'age', type: 'number', placeholder: 'Your age (18-100)' },
                 { label: 'Loan Amount', name: 'amount', type: 'number', placeholder: 'Enter loan amount' },
-                { label: 'PAN Number (Optional)', name: 'pan', type: 'text', placeholder: 'ABCDE1234F', maxLength: 10 },
+                { label: 'PAN Number', name: 'pan', type: 'text', placeholder: 'ABCDE1234F', maxLength: 10 },
                 { label: 'Aadhar Number (Optional)', name: 'aadhar', type: 'text', placeholder: '12-digit Aadhar number', maxLength: 12 },
               ].map(({ label, name, type, placeholder, maxLength }) => (
                 <div key={name}>
