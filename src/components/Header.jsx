@@ -53,8 +53,8 @@ export const Header = () => {
         <Link to="/" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">Home</Link>
         <Link to="/service" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">Services</Link>
         <Link to="/about" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">About Us</Link>
+        <Link className="block text-pink-100 py-2 hover:text-yellow-500 font-bold" to="/contactus">Contact Us</Link>
         <Link to="/terms" className="block text-pink-100 py-2 hover:text-yellow-500 font-bold">T&amp;C</Link>
-        <Link className="block text-pink-100 py-2 hover:text-yellow-500 font-bold" to="#contactus">Contact Us</Link>
       </div>
     </header>
   );
