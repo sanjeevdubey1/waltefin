@@ -74,7 +74,7 @@ export const EmiCalculator = () => {
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 font-medium">Interest Rate (%)</label>
+                  <label className="block mb-1 font-medium">Interest Rate  (%)</label>
                   <input
                     type="number"
                     value={interest}
