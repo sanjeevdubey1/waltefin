@@ -34,7 +34,7 @@ const Contactus = () => {
             <Phone size={18} /> Call Now
           </a>
           <a
-            href="mailto:dharmarealty@gmail.com"
+            href="mailto:fincopx@gmail.com"
             className="w-full md:w-[300px] bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-6 rounded-xl flex items-center justify-center gap-2"
           >
             <Mail size={18} /> Email Us
