@@ -6,11 +6,13 @@ import TermsAndServices from './pages/TermsAndServices ';
 import { Service } from './pages/Service';
 import Contactus from './pages/Contactus';
 import AboutUs from './pages/AboutUs';
+import ScrollToTop from './ScrollToTop';
 
 function App() {
   return (
     <Router>
     
+    <ScrollToTop/>
       <Routes>
         <Route path="/" element={<HeroSection />} />
         <Route path="/apply" element={<LoanForm />} />
