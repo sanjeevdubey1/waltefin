@@ -13,26 +13,22 @@ export const HeroSection = () => {
       <Header />
 
       {/* Hero Banner */}
-      <div className="relative h-screen w-full">
-        <img
-          src="https://images.unsplash.com/photo-1597773150796-e5c14ebecbf5?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0"
-          alt="Ripple water pattern"
-          className="absolute inset-0 h-full w-full object-cover z-0"
-          loading="eager"
-          fetchpriority="high"
-        />
-        <div className="absolute inset-0 bg-black/60 z-10 flex flex-col items-center justify-center text-center px-6">
-          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight max-w-4xl">
+      <div
+        className="relative min-h-[90vh] w-full bg-gradient-to-br from-black via-cyan-500/30 to-white text-white flex flex-col items-center justify-center text-center px-6"
+      >
+        <div className="absolute inset-0 bg-black/50 z-0" />
+        <div className="relative z-10 max-w-4xl">
+          <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight">
             Your Trusted Home Loan DSA in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
           </h1>
           <p className="text-yellow-100 text-lg sm:text-xl mb-4 font-medium">
             Personal, Business & Home Loan through top banks and NBFCs.
           </p>
-          <p className="text-white text-base sm:text-lg mb-8 max-w-2xl font-mono">
+          <p className="text-white text-base sm:text-lg mb-8 max-w-2xl font-mono mx-auto">
             Serving Navi Mumbai, Kharghar, Kamothe & Panvel. No middlemen. No false claims.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 z-20">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('/apply')}
               className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base shadow-lg transition"
