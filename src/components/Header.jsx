@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FCX from '../assets/FCX.png';
+import FCX from '../assets/FCX.webp';
 import { Menu, X } from 'lucide-react'; // Icons for open/close
 import { Link } from 'react-router-dom';
 export const Header = () => {
@@ -37,6 +37,7 @@ export const Header = () => {
 
         {/* Mobile Toggle Button */}
         <button
+        aria-label='Navbar'
           className="md:hidden text-gray-700"
           onClick={() => setIsOpen(!isOpen)}
         >

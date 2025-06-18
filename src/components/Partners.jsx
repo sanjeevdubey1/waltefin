@@ -1,9 +1,9 @@
 import React from 'react';
-import HDFC from '../assets/hdfc.jpg';
-import KOTAK from '../assets/kotak.jpg';
-import IDFC from '../assets/idfc.jpg';
-import IDBI from '../assets/idbi.jpg';
-import ANDRO from '../assets/andro.png';
+import HDFC from '../assets/hdfc.webp';
+import KOTAK from '../assets/kotak.webp';
+import IDFC from '../assets/idfc.webp';
+import IDBI from '../assets/idbi.webp';
+import ANDRO from '../assets/andro.webp';
 
 const Partners = () => {
   const bankLogos = [

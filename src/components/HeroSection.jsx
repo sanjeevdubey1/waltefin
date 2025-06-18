@@ -14,7 +14,7 @@ export const HeroSection = () => {
 
       {/* Hero Banner */}
       <div
-        className="relative min-h-[90vh] w-full bg-gradient-to-br from-black via-cyan-500/30 to-white text-white flex flex-col items-center justify-center text-center px-6"
+        className="relative min-h-[90vh] w-full bg-gradient-to-br from-black via-cyan-500/30 to-black text-white flex flex-col items-center justify-center text-center px-6"
       >
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 max-w-4xl">
@@ -30,6 +30,7 @@ export const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
+            aria-label='apply now '
               onClick={() => navigate('/apply')}
               className="bg-yellow-500 hover:bg-yellow-600 text-black font-bold px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base shadow-lg transition"
             >
@@ -42,6 +43,7 @@ export const HeroSection = () => {
               Talk to Us
             </a>
             <button
+            aria-label='emi calculator'
               onClick={() => navigate('/emi-calculator')}
               className="bg-white hover:bg-gray-200 text-black font-semibold px-6 sm:px-8 py-3 rounded-full text-sm sm:text-base"
             >
