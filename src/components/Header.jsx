@@ -21,8 +21,8 @@ export const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-6">
-          {['Home', 'Services', 'About Us', 'Contact Us' , 'T&C'].map((text, index) => {
-            const to = ['/', '/service', '/about', '/contactus', '/terms' ];
+          {['Home', 'Services', 'About Us', 'Contact Us' , 'Blog', 'T&C'].map((text, index) => {
+            const to = ['/', '/service', '/about', '/contactus', '/blog/home-loan-options', '/terms' ];
             return (
               <Link
                 key={text}

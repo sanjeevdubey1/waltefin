@@ -90,7 +90,7 @@ export const LoanForm = () => {
 
   const handleClose = () => {
     setVisible(false);
-    setTimeout(() => navigate('/'), 300);
+    setTimeout(() => navigate(-1), 300);
   };
 
   const handleSuccessClose = () => {

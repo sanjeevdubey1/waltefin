@@ -1,11 +1,19 @@
 import React from 'react';
 import { Building2, Landmark, Briefcase, Home, ShieldCheck, MapPin } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
+import {X} from 'lucide-react'
 const AboutUs = () => {
+  const handleClose=useNavigate()
   return (
     <div className="min-h-screen bg-black text-white px-6 py-10 flex items-center justify-center">
       <div className="w-full max-w-6xl space-y-10">
-        
+         <button
+                  onClick={()=>handleClose(-1)}
+                  className="absolute top-4 left-4 bg-gray-200 hover:bg-gray-300 p-2 rounded-full shadow z-50"
+                  aria-label="Close"
+                >
+                  <X className="w-5 h-5 text-gray-700" />
+                </button>
         {/* Header Section */}
         <div className="text-center">
           <h1 className="text-4xl font-bold text-yellow-600 mb-4">About Us</h1>
