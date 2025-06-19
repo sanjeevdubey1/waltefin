@@ -15,6 +15,7 @@ export const BlogHomeLoanOptions = () => {
 
       {/* Featured Image */}
       <img
+      
         src={FIN}
         alt="Home Loans in Navi Mumbai"
         className="rounded-lg shadow mb-8 w-full h-auto object-cover"
