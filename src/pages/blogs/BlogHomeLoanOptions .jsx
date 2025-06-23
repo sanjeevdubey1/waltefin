@@ -10,7 +10,7 @@ export const BlogHomeLoanOptions = () => {
 
       {/* Meta Info */}
       <p className="text-sm text-gray-500 text-center mb-8">
-        Written by FinCopX Team • June 2025
+        Written by FinCopX Team • June 10 , 2025
       </p>
 
       {/* Featured Image */}

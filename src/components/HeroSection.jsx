@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { Header } from './Header';
 import Services from './Services';
 import Partners from './Partners';
-
+import { Link } from 'react-router-dom';
 export const HeroSection = () => {
   const navigate = useNavigate();
-
+  
   return (
     <div>
       {/* Header */}
@@ -83,6 +83,7 @@ export const HeroSection = () => {
           </a>
         </div>
         <p className="text-sm text-gray-500">We’re available Mon–Sat, 10am–7pm</p>
+        <Link className='text-sm text-gray-500 underline ' to='/blogs' >Blogs</Link>
       </section>
 
       {/* Footer */}

@@ -113,7 +113,7 @@ export const EmiCalculator = () => {
 
               {emi && (
                 <div className="mt-6 text-center">
-                  <h3 className="text-lg font-semibold text-gray-800">Estimated EMI: ₹{emi}</h3>
+                  <h3 className="text-lg font-semibold text-pink-50">Estimated EMI: ₹{emi}</h3>
                 </div>
               )}
             </div>
