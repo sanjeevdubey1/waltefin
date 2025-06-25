@@ -159,10 +159,10 @@ export const LoanForm = () => {
                   onChange={handleChange}
                   className={`w-full px-3 py-2 border rounded text-sm ${errors.loanType ? 'border-red-500' : ''}`}
                 >
-                  <option value="">Select</option>
-                  <option value="Personal Loan">Personal Loan</option>
-                  <option value="Business Loan">Business Loan</option>
-                  <option value="Property Loan">Property Loan</option>
+                  <option  className='text-black'  value="">Select</option>
+                  <option className='text-black'  value="Personal Loan">Personal Loan</option>
+                  <option  className='text-black' value="Business Loan">Business Loan</option>
+                  <option  className='text-black' value="Property Loan">Property Loan</option>
                 </select>
                 {errors.loanType && <p className="text-red-500 text-xs mt-1">{errors.loanType}</p>}
               </div>
@@ -177,10 +177,10 @@ export const LoanForm = () => {
                   onChange={handleChange}
                   className={`w-full px-3 py-2 border rounded text-sm ${errors.occupation ? 'border-red-500' : ''}`}
                 >
-                  <option value="">Select occupation</option>
-                  <option value="Salaried">Salaried</option>
-                  <option value="Business">Business</option>
-                  <option value="Others">Others</option>
+                  <option className='text-black' value="">Select occupation</option>
+                  <option className='text-black' value="Salaried">Salaried</option>
+                  <option className='text-black' value="Business">Business</option>
+                  <option className='text-black' value="Others">Others</option>
                 </select>
                 {errors.occupation && <p className="text-red-500 text-xs mt-1">{errors.occupation}</p>}
               </div>
