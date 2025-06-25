@@ -10,6 +10,7 @@ import ScrollToTop from './ScrollToTop';
 import Blogs from './pages/Blogs';
 import { BlogHomeLoanOptions } from './pages/blogs/BlogHomeLoanOptions ';
 import { BlogBusinessLoanPanvel } from './pages/blogs/BlogBusinessLoanPanvel';
+import LoanDocuments from './pages/LoanDocuments';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path='/service' element={<Service/>}/>
         <Route path='/contactus' element={<Contactus/>}/>
         <Route path='/about' element={<AboutUs/>}/>
+        <Route path='/loan-documents' element={<LoanDocuments/>}/>
         <Route path='/blogs' element={<Blogs/>}/>
         <Route path='/blog/home-loan-options' element={<BlogHomeLoanOptions/>}/>
         <Route path='/blog/business-loan-tips' element={<BlogBusinessLoanPanvel/>}/>

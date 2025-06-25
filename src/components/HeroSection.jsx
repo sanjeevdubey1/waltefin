@@ -83,7 +83,11 @@ export const HeroSection = () => {
           </a>
         </div>
         <p className="text-sm text-gray-500">We’re available Mon–Sat, 10am–7pm</p>
+        <div className='space-x-3'>
+
         <Link className='text-sm text-gray-500 underline ' to='/blogs' >Blogs</Link>
+        <Link className='text-sm text-gray-500 underline' to='/loan-documents' >Loan Documents</Link>
+        </div>
       </section>
 
       {/* Footer */}
