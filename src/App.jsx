@@ -12,6 +12,7 @@ import { BlogHomeLoanOptions } from './pages/blogs/BlogHomeLoanOptions ';
 import { BlogBusinessLoanPanvel } from './pages/blogs/BlogBusinessLoanPanvel';
 import LoanDocuments from './pages/LoanDocuments';
 import RealEstatePanel from './pages/RealEstatePanel';
+import ApplyNowForm from './pages/ApllyNowForm';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route path='/blog/home-loan-options' element={<BlogHomeLoanOptions/>}/>
         <Route path='/blog/business-loan-tips' element={<BlogBusinessLoanPanvel/>}/>
         <Route path='/real-estate' element={<RealEstatePanel/>}/>
+        <Route path='/apply-now' element={<ApplyNowForm/>}/>
       </Routes>
     </Router>
   );

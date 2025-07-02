@@ -1,212 +1,242 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   MapPin,
   IndianRupee,
-  Eye,
-  X,
   PhoneCall,
   ChevronLeft,
   ChevronRight,
-  Link
+  LayoutDashboard,
+  Building2,
+  Menu,
+  X,
 } from "lucide-react";
 import { useSwipeable } from "react-swipeable";
+import { useNavigate } from "react-router-dom";
 
-// Local image imports
 import prop1 from "../assets/prop1.jpeg";
 import prop2 from "../assets/prop2.jpeg";
 import prop3 from "../assets/prop3.jpeg";
 
-const properties = [
+const allProperties = [
   {
     id: 1,
-    slug: "vinayak-green-1bhk",
     title: "Vinayak Green 1 BHK",
-    price: "28,00,000",
-    location: "Panvel, Navi Mumbai",
+    price: "23,00,000",
+    location: "Rasayani",
+    bhk: "1 BHK",
     images: [prop1, prop2, prop3],
-    description: "Spacious 1 BHK flat with garden view, perfect for families.",
   },
   {
     id: 2,
-    slug: "ocean-view-2bhk",
     title: "Ocean View 2 BHK",
     price: "52,00,000",
-    location: "Versova, Mumbai",
-    images: ["/images/property2-1.jpg", "/images/property2-2.jpg"],
-    description: "Sea-facing 2 BHK with a large balcony and amenities.",
+    location: "Panvel",
+    bhk: "2 BHK",
+    images: [prop2, prop3],
+  },
+  {
+    id: 3,
+    title: "Rasayani 2 BHK Prime",
+    price: "45,00,000",
+    location: "Rasayani",
+    bhk: "2 BHK",
+    images: [prop2],
+  },
+  {
+    id: 4,
+    title: "Panvel 1 BHK Compact",
+    price: "31,00,000",
+    location: "Panvel",
+    bhk: "1 BHK",
+    images: [prop3],
   },
 ];
 
-const RealEstatePanel = () => {
-  const [selectedProperty, setSelectedProperty] = useState(null);
+export default function RealEstatePanel() {
   const [currentImages, setCurrentImages] = useState(
-    properties.map(() => 0)
+    allProperties.map(() => 0)
   );
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [filters, setFilters] = useState({ location: "All", bhk: "All" });
 
-  // Autoplay image slider
+  const navigate = useNavigate();
+
+  // Auto slide images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImages((prev) =>
         prev.map(
-          (curr, index) => (curr + 1) % properties[index].images.length
+          (curr, i) => (curr + 1) % allProperties[i].images.length
         )
       );
     }, 3000);
     return () => clearInterval(interval);
   }, []);
 
-  const handleSlide = (propertyIndex, direction) => {
+  const handleSlide = (idx, dir) => {
     setCurrentImages((prev) => {
-      const updated = [...prev];
-      const total = properties[propertyIndex].images.length;
-      updated[propertyIndex] =
-        direction === "prev"
-          ? (updated[propertyIndex] - 1 + total) % total
-          : (updated[propertyIndex] + 1) % total;
-      return updated;
+      const next = [...prev];
+      const len = allProperties[idx].images.length;
+      next[idx] =
+        dir === "prev"
+          ? (next[idx] - 1 + len) % len
+          : (next[idx] + 1) % len;
+      return next;
     });
   };
 
-  const handleDotClick = (propertyIndex, imageIndex) => {
-    setCurrentImages((prev) => {
-      const updated = [...prev];
-      updated[propertyIndex] = imageIndex;
-      return updated;
-    });
-  };
-
-  const getSwipeHandlers = (propertyIndex) =>
+  // ✅ Stable swipe handlers - must be called once per item only
+  const swipeHandlersList = allProperties.map((_, idx) =>
     useSwipeable({
-      onSwipedLeft: () => handleSlide(propertyIndex, "next"),
-      onSwipedRight: () => handleSlide(propertyIndex, "prev"),
-      preventDefaultTouchmoveEvent: true,
+      onSwipedLeft: () => handleSlide(idx, "next"),
+      onSwipedRight: () => handleSlide(idx, "prev"),
       trackMouse: true,
+      preventScrollOnSwipe: true,
+    })
+  );
+
+  const filtered = useMemo(() => {
+    return allProperties.filter((p) => {
+      const loc = filters.location === "All" || p.location === filters.location;
+      const bhk = filters.bhk === "All" || p.bhk === filters.bhk;
+      return loc && bhk;
     });
+  }, [filters]);
 
   return (
-    <div className="pt-16 px-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-bold mb-6 text-center text-pink-50">
-        Featured Listings
-      </h2>
+    <div className="flex h-screen bg-gray-100">
+      <aside
+        className={`fixed md:static z-50 bg-white border-r w-64 shadow-lg p-4 transition-transform duration-300 ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
+        }`}
+      >
+        <div className="flex justify-between items-center mb-4">
+          <span className="text-xl font-bold text-blue-600">Dubey Realty</span>
+          <button className="md:hidden" onClick={() => setIsSidebarOpen(false)}>
+            <X className="text-black" />
+          </button>
+        </div>
+        <nav className="space-y-3">
+          <span className="flex items-center gap-3 text-gray-700 font-medium">
+            <LayoutDashboard size={18} /> Dashboard
+          </span>
+          <span className="flex items-center gap-3 text-gray-700 font-medium">
+            <Building2 size={18} /> Properties
+          </span>
+        </nav>
+      </aside>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {properties.map((property, index) => {
-          const swipeHandlers = getSwipeHandlers(index);
-          return (
-            <div
-              key={property.id}
-              className="bg-gray-300 rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300 relative"
-            >
-              {/* Image Slider */}
+      <main className="flex-1 overflow-y-auto p-6">
+        <header className="flex justify-between items-center mb-6">
+          <div>
+            <h1 className="text-2xl font-semibold text-black">Property Dashboard</h1>
+            <p className="text-gray-500">Filter by location and BHK type</p>
+          </div>
+          <button
+            className="md:hidden bg-blue-600 text-white p-2 rounded"
+            onClick={() => setIsSidebarOpen(true)}
+          >
+            <Menu />
+          </button>
+        </header>
+
+        <section className="flex flex-wrap gap-4 mb-6">
+          <select
+            value={filters.location}
+            onChange={(e) =>
+              setFilters((f) => ({ ...f, location: e.target.value }))
+            }
+            className="bg-white border rounded px-4 py-2 shadow-sm text-black"
+          >
+            <option value="All">All Locations</option>
+            <option value="Panvel">Panvel</option>
+            <option value="Rasayani">Rasayani</option>
+          </select>
+
+          <select
+            value={filters.bhk}
+            onChange={(e) =>
+              setFilters((f) => ({ ...f, bhk: e.target.value }))
+            }
+            className="bg-white border rounded px-4 py-2 shadow-sm text-black"
+          >
+            <option value="All">All BHK Types</option>
+            <option value="1 BHK">1 BHK</option>
+            <option value="2 BHK">2 BHK</option>
+          </select>
+        </section>
+
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {filtered.map((property) => {
+            const originalIdx = allProperties.findIndex(
+              (p) => p.id === property.id
+            );
+            const swipeHandlers = swipeHandlersList[originalIdx];
+
+            return (
               <div
-                className="relative h-52 w-full overflow-hidden rounded-t-2xl"
-                {...swipeHandlers}
+                key={property.id}
+                className="bg-white rounded-xl shadow hover:shadow-md transition overflow-hidden"
               >
-                <img
-                  src={property.images[currentImages[index]]}
-                  alt={property.title}
-                  className="w-full h-52 object-cover"
-                />
-                <button
-                  onClick={() => handleSlide(index, "prev")}
-                  className="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-1"
-                >
-                  <ChevronLeft  size={20} />
-                </button>
-                <button
-                  onClick={() => handleSlide(index, "next")}
-                  className="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white bg-opacity-80 rounded-full p-1"
-                >
-                  <ChevronRight size={20} />
-                </button>
+                <div className="relative h-48 w-full" {...swipeHandlers}>
+                  <img
+                    src={
+                      property.images[
+                        currentImages[originalIdx] % property.images.length
+                      ]
+                    }
+                    alt={property.title}
+                    className="w-full h-full object-cover"
+                  />
+                  <button
+                    onClick={() => handleSlide(originalIdx, "prev")}
+                    className="absolute top-1/2 left-2 -translate-y-1/2 bg-white/70 rounded-full p-1"
+                  >
+                    <ChevronLeft size={18} />
+                  </button>
+                  <button
+                    onClick={() => handleSlide(originalIdx, "next")}
+                    className="absolute top-1/2 right-2 -translate-y-1/2 bg-white/70 rounded-full p-1"
+                  >
+                    <ChevronRight size={18} />
+                  </button>
+                </div>
 
-                {/* Dots Indicator */}
-                <div className="absolute bottom-2 w-full flex justify-center gap-1">
-                  {property.images.map((_, i) => (
+                <div className="p-4 text-gray-800">
+                  <h3 className="text-lg font-semibold">{property.title}</h3>
+                  <p className="flex items-center text-sm text-gray-600">
+                    <MapPin className="w-4 h-4 mr-1" /> {property.location}
+                  </p>
+                  <p className="flex items-center mt-1 font-medium text-green-700">
+                    <IndianRupee className="w-4 h-4 mr-1" /> {property.price}
+                  </p>
+
+                  <div className="flex gap-3 mt-4">
                     <button
-                      key={i}
-                      onClick={() => handleDotClick(index, i)}
-                      className={`w-2 h-2 rounded-full ${
-                        i === currentImages[index]
-                          ? "bg-blue-600"
-                          : "bg-gray-300"
-                      }`}
-                    />
-                  ))}
+                      onClick={() => navigate("/apply-now")}
+                      className="bg-blue-600 text-white text-sm px-4 py-2 rounded hover:bg-blue-700"
+                    >
+                      Apply Now
+                    </button>
+                    <a
+                      href="tel:+919372347959"
+                      className="bg-green-600 text-white text-sm px-4 py-2 rounded hover:bg-green-700 flex items-center gap-2"
+                    >
+                      <PhoneCall size={16} /> Call
+                    </a>
+                  </div>
                 </div>
               </div>
+            );
+          })}
 
-              <div className="p-4 space-y-2 text-gray-800">
-                <h3 className="text-xl font-semibold">{property.title}</h3>
-                <p className="flex items-center text-sm">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  {property.location}
-                </p>
-                <p className="flex items-center font-medium text-green-700">
-                  <IndianRupee className="w-4 h-4 mr-1" />
-                  {property.price}
-                </p>
-<div className="flex items-center gap-3 mt-3">
-  <Link
-    to="/apply-now"
-    className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl font-semibold shadow-md hover:bg-blue-700 transition"
-  >
-     Apply Now
-  </Link>
-
-  <a
-    href="tel:+919967689088"
-    className="inline-flex items-center gap-2 bg-green-500 text-white px-3 py-2 rounded-xl shadow-md hover:bg-green-600 transition"
-  >
-    <PhoneCall size={18} />
-    Call
-  </a>
-</div>
-
-
-              </div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Modal */}
-      {selectedProperty && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-gray-100 rounded-2xl shadow-lg max-w-md w-full p-8 relative text-gray-800">
-            <button
-              onClick={() => setSelectedProperty(null)}
-              className="absolute top-4 right-4 text-gray-500 hover:text-red-500"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Simple Image in Modal (can upgrade to full slider later) */}
-            <div className="relative h-48 w-full mb-4 overflow-hidden">
-              <img
-                src={selectedProperty.images[0]}
-                alt={selectedProperty.title}
-                className="w-full h-full object-cover rounded-xl"
-              />
-            </div>
-
-            <h3 className="text-2xl font-bold mb-2">
-              {selectedProperty.title}
-            </h3>
-            <p className="mb-2 flex items-center">
-              <MapPin className="w-4 h-4 mr-1" />
-              {selectedProperty.location}
+          {filtered.length === 0 && (
+            <p className="text-gray-500 col-span-full">
+              No properties match your filters.
             </p>
-            <p className="mb-2 flex items-center text-green-700 font-medium">
-              <IndianRupee className="w-4 h-4 mr-1" />
-              {selectedProperty.price}
-            </p>
-            <p className="text-gray-600">{selectedProperty.description}</p>
-          </div>
+          )}
         </div>
-      )}
+      </main>
     </div>
   );
-};
-
-export default RealEstatePanel;
+}
