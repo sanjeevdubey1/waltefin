@@ -28,7 +28,7 @@ const allProperties = [
   {
     id: 1,
     title: "Vinayak Green 1 BHK Flat for Sale in Rasayani",
-    price: "23,00,000",
+    price: "21,00,000",
     location: "Rasayani",
     bhk: "1 BHK",
     images: [prop1, vinayak1, vinayak2, vinayak3, vinayak4, vinayak5, vinayak6],
