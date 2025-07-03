@@ -99,7 +99,7 @@ export default function RealEstatePanel() {
   };
 
   return (
-    <div className="flex bg-black min-h-screen">
+    <div className="flex bg-black min-h-screen flex-col md:flex-row">
       <aside
         className={`fixed md:static z-50 bg-black border-r w-64 shadow-xl transition-transform duration-300 ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
@@ -135,12 +135,12 @@ export default function RealEstatePanel() {
         </nav>
       </aside>
 
-      <main className="flex-1 overflow-y-auto p-6">
+      <main className="flex-1 overflow-y-auto p-4 sm:p-6">
         <header className="sticky top-0 bg-black z-10 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-white">Affordable Flats in Navi Mumbai, Panvel</h1>
-              <p className="text-sm text-gray-400">Browse budget-friendly homes available now</p>
+              <h1 className="text-xl sm:text-3xl font-bold text-white">Affordable Flats in Navi Mumbai, Panvel</h1>
+              <p className="text-xs sm:text-sm text-gray-400">Browse budget-friendly homes available now</p>
             </div>
             <button
               className="md:hidden bg-blue-600 text-white p-2 rounded"
@@ -254,13 +254,13 @@ export default function RealEstatePanel() {
         <Modal
           isOpen={isImageModalOpen}
           onRequestClose={() => setIsImageModalOpen(false)}
-          className="fixed inset-0 flex items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 flex items-center justify-center bg-black/90 p-2 sm:p-4"
           overlayClassName="fixed inset-0 bg-black/80"
         >
-          <div className="relative max-w-4xl w-full">
+          <div className="relative w-full max-w-4xl">
             <button
               onClick={() => setIsImageModalOpen(false)}
-              className="absolute top-4 right-4 text-white bg-white/20 p-2 rounded-full hover:bg-white/30"
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-50 text-white bg-white/20 p-2 rounded-full hover:bg-white/30"
             >
               <X size={24} />
             </button>
@@ -268,24 +268,24 @@ export default function RealEstatePanel() {
             <img
               src={modalImages[modalIndex]}
               alt={`Property Image ${modalIndex + 1}`}
-              className="w-full h-[80vh] object-contain rounded"
+              className="w-full max-h-[70vh] sm:max-h-[80vh] object-contain rounded"
             />
 
-            <div className="absolute left-4 top-1/2 -translate-y-1/2">
+            <div className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-50">
               <button
                 onClick={() => handleModalImageChange("prev")}
                 className="bg-white/30 text-white rounded-full p-2 hover:bg-white/40"
               >
-                <ChevronLeft size={24} />
+                <ChevronLeft size={20} className="sm:w-6 sm:h-6" />
               </button>
             </div>
 
-            <div className="absolute right-4 top-1/2 -translate-y-1/2">
+            <div className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-50">
               <button
                 onClick={() => handleModalImageChange("next")}
                 className="bg-white/30 text-white rounded-full p-2 hover:bg-white/40"
               >
-                <ChevronRight size={24} />
+                <ChevronRight size={20} className="sm:w-6 sm:h-6" />
               </button>
             </div>
           </div>
