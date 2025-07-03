@@ -139,7 +139,7 @@ export default function RealEstatePanel() {
         <header className="sticky top-0 bg-black z-10 py-4">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-white">Affordable Flats in Rasayani</h1>
+              <h1 className="text-3xl font-bold text-white">Affordable Flats in Navi Mumbai, Panvel</h1>
               <p className="text-sm text-gray-400">Browse budget-friendly homes available now</p>
             </div>
             <button
