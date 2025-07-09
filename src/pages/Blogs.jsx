@@ -17,12 +17,18 @@ const blogList = [
     image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // business finance
   },
   {
-    title: "Become a Successful DSA Agent",
-    slug: "how-to-become-dsa",
-    date: "Upcoming....",
-    description: "Start your journey as a DSA agent in India with this step-by-step guide.",
-    image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=800&q=80", // agent/working
-  },
+  
+
+  title: "Best Home Loan Provider in Panvel: Why FincoX Stands Out",
+  slug: "best-home-loan-provider",
+  date: "July 2025",
+  description: "Looking for the best home loan provider in Panvel? Discover why FincoX is the top choice with low interest rates, fast approvals, and personalized service.",
+  image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=800&q=80",
+  
+}
+
+
+  
 ];
 
 const Blogs = () => {
