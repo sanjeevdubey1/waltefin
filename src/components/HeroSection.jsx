@@ -19,7 +19,7 @@ export const HeroSection = () => {
         <div className="absolute inset-0 bg-black/50 z-0" />
         <div className="relative z-10 max-w-4xl">
           <h1 className="text-white text-4xl sm:text-5xl font-bold mb-3 leading-tight">
-            Your Trusted Home Loan DSA in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
+            Your Trusted Home Loan  Provider in Navi Mumbai & Panvel — <span className="text-yellow-400">FinCopX</span>
           </h1>
           <p className="text-yellow-100 text-lg sm:text-xl mb-4 font-medium">
             Personal, Business & Home Loan through top banks and NBFCs.
