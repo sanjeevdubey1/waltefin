@@ -25,6 +25,25 @@ const blogList = [
   description: "Looking for the best home loan provider in Panvel? Discover why FincoX is the top choice with low interest rates, fast approvals, and personalized service.",
   image: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=800&q=80",
   
+},
+ {
+  
+
+  title: "How to Improve Your CIBIL Score Fast in 2025",
+  slug: "how-to-improve-cibil-score-india",
+  date: "July 2025",
+  description: "Learn 15+ proven tips to improve your CIBIL score fast in India. Boost your credit health, get easier loan approvals, and secure better interest rates in 2025.",
+  image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1115&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  
+}, {
+  
+
+  title: "How to Get a Home Loan in India: Complete Guide 2025",
+  slug: "how-to-get-a-home-loan-india",
+  date: "July 2025",
+  description: "Step-by-step guide on how to get a home loan in India in 2025. Learn about eligibility, documents, process, and tips to improve approval chances.",
+  image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  
 }
 
 

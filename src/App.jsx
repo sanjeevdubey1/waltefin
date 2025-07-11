@@ -14,6 +14,8 @@ import LoanDocuments from './pages/LoanDocuments';
 import RealEstatePanel from './pages/RealEstatePanel';
 import ApplyNowForm from './pages/ApllyNowForm';
 import BlogHomeLoanPanvel from './pages/blogs/BlogHomeLoanPanvel';
+import BlogImproveCIBILScore from './pages/blogs/BlogImproveCIBILScore';
+import BlogHomeLoanIndia from './pages/blogs/BlogHomeLoanIndia';
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
         <Route path='/blog/home-loan-options' element={<BlogHomeLoanOptions/>}/>
         <Route path='/blog/business-loan-tips' element={<BlogBusinessLoanPanvel/>}/>
         <Route path='/blog/best-home-loan-provider' element={<BlogHomeLoanPanvel/>}/>
+        <Route path='/blog/how-to-improve-cibil-score-india' element={<BlogImproveCIBILScore/>}/>
+        <Route path='/blog/how-to-get-a-home-loan-india' element={<BlogHomeLoanIndia/>}/>
         <Route path='/real-estate' element={<RealEstatePanel/>}/>
         <Route path='/apply-now' element={<ApplyNowForm/>}/>
       </Routes>
