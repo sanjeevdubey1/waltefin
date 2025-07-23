@@ -4,8 +4,6 @@ import { X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const phoneRegex = /^[6-9]\d{9}$/;
-const panRegex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
-const aadharRegex = /^\d{12}$/;
 
 export const LoanForm = () => {
   const navigate = useNavigate();
@@ -13,36 +11,30 @@ export const LoanForm = () => {
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState({});
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    age: '',
     loanType: '',
     amount: '',
-    occupation: '',
-    pan: '',
-    aadhar: '',
+    email: ''
   });
 
   const validate = () => {
     const errs = {};
     if (!formData.name.trim()) errs.name = 'Name is required';
     if (!phoneRegex.test(formData.phone)) errs.phone = 'Invalid phone number';
-    if (!(formData.age >= 18 && formData.age <= 100)) errs.age = 'Age must be between 18 and 100';
     if (!formData.loanType) errs.loanType = 'Select a loan type';
     if (!formData.amount || formData.amount <= 0) errs.amount = 'Enter a valid loan amount';
-    if (!formData.occupation.trim()) errs.occupation = 'Occupation is required';
-    if (!panRegex.test(formData.pan.toUpperCase())) errs.pan = 'Invalid PAN format';
-    if (formData.aadhar && !aadharRegex.test(formData.aadhar)) errs.aadhar = 'Invalid Aadhar number';
+    if (!formData.email.includes('@')) errs.email = 'Enter a valid email address';
+    if (!acceptTerms) errs.terms = 'You must accept the terms and conditions';
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    if (name === 'pan') {
-      setFormData({ ...formData, [name]: value.toUpperCase() });
-    } else if (['phone', 'aadhar', 'age', 'amount'].includes(name)) {
+    if (["phone", "amount"].includes(name)) {
       if (/^\d*$/.test(value)) {
         setFormData({ ...formData, [name]: value });
       }
@@ -67,16 +59,8 @@ export const LoanForm = () => {
       if (response.ok) {
         setVisible(false);
         setSubmitted(true);
-        setFormData({
-          name: '',
-          phone: '',
-          age: '',
-          loanType: '',
-          amount: '',
-          occupation: '',
-          pan: '',
-          aadhar: '',
-        });
+        setFormData({ name: '', phone: '', loanType: '', amount: '', email: '' });
+        setAcceptTerms(false);
       } else {
         alert('Submission failed. Please try again.');
       }
@@ -113,104 +97,98 @@ export const LoanForm = () => {
       <AnimatePresence>
         {visible && (
           <motion.div
-            className="w-full max-w-3xl bg-black shadow-2xl rounded-xl p-6 flex flex-col justify-between text-white"
+            className="w-full max-w-5xl bg-black shadow-2xl rounded-xl p-6 flex flex-col md:flex-row justify-between text-white"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.3 } }}
           >
-            <div>
-              <h1 className="text-3xl font-bold text-yellow-600 text-center mb-1 tracking-wide">Fincopx</h1>
-              <h2 className="text-xl font-bold mb-4 text-center text-indigo-600">Loan Enquiry Form</h2>
+            <div className="w-full md:w-1/2 pr-4 hidden md:block">
+              <h1 className="text-3xl font-bold text-yellow-600 mb-4">Fincopx Loans</h1>
+              <p className="text-sm text-gray-200 mb-4">
+                We help you get the best loan options tailored to your needs. Whether you're looking for a personal loan,
+                business loan, or a home loan – our simple process ensures fast and transparent services. Enjoy seamless
+                digital onboarding, expert assistance, and multiple lending partners under one platform.
+              </p>
+              <p className="text-xs text-gray-400">Boost your chances of approval by submitting accurate details. Get started now!</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-grow" noValidate>
-              {[
-                { label: 'Full Name', name: 'name', type: 'text', placeholder: 'Enter your full name' },
-                { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '10-digit mobile number', maxLength: 10 },
-                { label: 'Age', name: 'age', type: 'number', placeholder: 'Your age (18-100)' },
-                { label: 'Loan Amount', name: 'amount', type: 'number', placeholder: 'Enter loan amount' },
-                { label: 'PAN Number', name: 'pan', type: 'text', placeholder: 'ABCDE1234F', maxLength: 10 },
-                { label: 'Aadhar Number (Optional)', name: 'aadhar', type: 'text', placeholder: '12-digit Aadhar number', maxLength: 12 },
-              ].map(({ label, name, type, placeholder, maxLength }) => (
-                <div key={name}>
-                  <label className="block text-sm mb-1" htmlFor={name}>{label}</label>
-                  <input
-                    id={name}
-                    type={type}
-                    name={name}
-                    placeholder={placeholder}
-                    value={formData[name]}
-                    required={name !== 'aadhar'}
-                    maxLength={maxLength}
+            <div className="w-full md:w-1/2 border-l border-gray-600 pl-4">
+              <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4" noValidate>
+                {[{ label: 'Full Name', name: 'name', type: 'text', placeholder: 'Enter your full name' },
+                  { label: 'Phone Number', name: 'phone', type: 'tel', placeholder: '10-digit mobile number', maxLength: 10 },
+                  { label: 'Email Address', name: 'email', type: 'email', placeholder: 'Enter your email' },
+                  { label: 'Loan Amount', name: 'amount', type: 'number', placeholder: 'Enter loan amount' }
+                ].map(({ label, name, type, placeholder, maxLength }) => (
+                  <div key={name}>
+                    <label className="block text-sm mb-1" htmlFor={name}>{label}</label>
+                    <input
+                      id={name}
+                      type={type}
+                      name={name}
+                      placeholder={placeholder}
+                      value={formData[name]}
+                      required
+                      maxLength={maxLength}
+                      onChange={handleChange}
+                      className={`w-full px-3 py-2 border rounded text-sm ${errors[name] ? 'border-red-500' : ''}`}
+                    />
+                    {errors[name] && <p className="text-red-500 text-xs mt-1">{errors[name]}</p>}
+                  </div>
+                ))}
+
+                <div>
+                  <label className="block text-sm mb-1" htmlFor="loanType">Loan Type</label>
+                  <select
+                    id="loanType"
+                    name="loanType"
+                    required
+                    value={formData.loanType}
                     onChange={handleChange}
-                    className={`w-full px-3 py-2 border rounded text-sm ${errors[name] ? 'border-red-500' : ''}`}
-                  />
-                  {errors[name] && <p className="text-red-500 text-xs mt-1">{errors[name]}</p>}
-                </div>
-              ))}
-
-              <div>
-                <label className="block text-sm mb-1" htmlFor="loanType">Loan Type</label>
-                <select
-                  id="loanType"
-                  name="loanType"
-                  required
-                  value={formData.loanType}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.loanType ? 'border-red-500' : ''}`}
-                >
-                  <option  className='text-black'  value="">Select</option>
-                  <option className='text-black'  value="Personal Loan">Personal Loan</option>
-                  <option  className='text-black' value="Business Loan">Business Loan</option>
-                  <option  className='text-black' value="Property Loan">Property Loan</option>
-                </select>
-                {errors.loanType && <p className="text-red-500 text-xs mt-1">{errors.loanType}</p>}
-              </div>
-
-              <div>
-                <label className="block text-sm mb-1" htmlFor="occupation">Occupation</label>
-                <select
-                  id="occupation"
-                  name="occupation"
-                  required
-                  value={formData.occupation}
-                  onChange={handleChange}
-                  className={`w-full px-3 py-2 border rounded text-sm ${errors.occupation ? 'border-red-500' : ''}`}
-                >
-                  <option className='text-black' value="">Select occupation</option>
-                  <option className='text-black' value="Salaried">Salaried</option>
-                  <option className='text-black' value="Business">Business</option>
-                  <option className='text-black' value="Others">Others</option>
-                </select>
-                {errors.occupation && <p className="text-red-500 text-xs mt-1">{errors.occupation}</p>}
-              </div>
-            </form>
-
-            <div className="flex flex-col items-center gap-2 mt-4 w-full">
-              <Link to="/terms" className="text-blue-600 underline hover:text-blue-800 transition text-xs">
-                Read Terms & Conditions ©
-              </Link>
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                disabled={loading}
-                className={`w-full sm:w-auto bg-yellow-500 text-black px-8 py-2 rounded font-semibold hover:bg-yellow-600 transition text-sm flex items-center justify-center gap-2 ${
-                  loading ? 'opacity-50 cursor-not-allowed' : ''
-                }`}
-              >
-                {loading && (
-                  <svg
-                    className="animate-spin h-5 w-5 text-black"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
+                    className={`w-full px-3 py-2 border rounded text-sm ${errors.loanType ? 'border-red-500' : ''}`}
                   >
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-                  </svg>
-                )}
-                Submit Enquiry
-              </button>
+                    <option className='text-black' value="">Select</option>
+                    <option className='text-black' value="Personal Loan">Personal Loan</option>
+                    <option className='text-black' value="Business Loan">Business Loan</option>
+                    <option className='text-black' value="Property Loan">Home Loan</option>
+                  </select>
+                  {errors.loanType && <p className="text-red-500 text-xs mt-1">{errors.loanType}</p>}
+                </div>
+
+                <div className="flex items-center text-xs">
+                  <input
+                    type="checkbox"
+                    id="terms"
+                    checked={acceptTerms}
+                    onChange={(e) => setAcceptTerms(e.target.checked)}
+                    className="mr-2"
+                  />
+                  <label htmlFor="terms" className="text-gray-300">
+                    I accept the <Link to="/terms" className="underline text-blue-400 hover:text-blue-600">terms & conditions</Link>
+                  </label>
+                </div>
+                {errors.terms && <p className="text-red-500 text-xs">{errors.terms}</p>}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className={`w-full bg-yellow-500 text-black px-8 py-2 rounded font-semibold hover:bg-yellow-600 transition text-sm flex items-center justify-center gap-2 ${
+                    loading ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  {loading && (
+                    <svg
+                      className="animate-spin h-5 w-5 text-black"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+                    </svg>
+                  )}
+                  Submit Enquiry
+                </button>
+              </form>
             </div>
           </motion.div>
         )}

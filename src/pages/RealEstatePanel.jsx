@@ -5,13 +5,11 @@ import {
   PhoneCall,
   ChevronLeft,
   ChevronRight,
-  LayoutDashboard,
-  Building2,
   Menu,
   X,
 } from "lucide-react";
 import { useSwipeable } from "react-swipeable";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 
 import prop1 from "../assets/prop1.jpeg";
@@ -37,14 +35,12 @@ const allProperties = [
 
 export default function RealEstatePanel() {
   const [currentImages, setCurrentImages] = useState(allProperties.map(() => 0));
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [filters, setFilters] = useState({ location: "All", bhk: "All" });
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState([]);
   const [modalIndex, setModalIndex] = useState(0);
 
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -99,42 +95,7 @@ export default function RealEstatePanel() {
   };
 
   return (
-    <div className="flex bg-black min-h-screen flex-col md:flex-row">
-      <aside
-        className={`fixed md:static z-50 bg-black border-r w-64 shadow-xl transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"
-        }`}
-        aria-label="Sidebar Navigation"
-      >
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-4 flex justify-between items-center">
-          <span className="text-xl font-bold text-white">Dubey Realty</span>
-          <button className="md:hidden text-white" onClick={() => setIsSidebarOpen(false)}>
-            <X />
-          </button>
-        </div>
-
-        <nav className="flex flex-col mt-4 px-4 space-y-2">
-          <button
-            className={`flex items-center gap-3 px-3 py-2 text-sm rounded font-medium transition-all ${
-              location.pathname === "/dashboard"
-                ? "bg-blue-100 text-blue-700"
-                : "text-gray-400 hover:bg-blue-50 hover:text-white"
-            }`}
-          >
-            <LayoutDashboard className="w-5 h-5" /> Dashboard
-          </button>
-          <button
-            className={`flex items-center gap-3 px-3 py-2 text-sm rounded font-medium transition-all ${
-              location.pathname === "/properties"
-                ? "bg-blue-100 text-blue-700"
-                : "text-gray-400 hover:bg-blue-50 hover:text-white"
-            }`}
-          >
-            <Building2 className="w-5 h-5" /> Properties
-          </button>
-        </nav>
-      </aside>
-
+    <div className="bg-black min-h-screen flex flex-col">
       <main className="flex-1 overflow-y-auto p-4 sm:p-6">
         <header className="sticky top-0 bg-black z-10 py-4">
           <div className="flex justify-between items-center">
@@ -142,12 +103,6 @@ export default function RealEstatePanel() {
               <h1 className="text-xl sm:text-3xl font-bold text-white">Affordable Flats in Navi Mumbai, Panvel</h1>
               <p className="text-xs sm:text-sm text-gray-400">Browse budget-friendly homes available now</p>
             </div>
-            <button
-              className="md:hidden bg-blue-600 text-white p-2 rounded"
-              onClick={() => setIsSidebarOpen(true)}
-            >
-              <Menu />
-            </button>
           </div>
         </header>
 

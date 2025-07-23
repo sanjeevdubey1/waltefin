@@ -42,9 +42,17 @@ const blogList = [
   slug: "how-to-get-a-home-loan-india",
   date: "July 2025",
   description: "Step-by-step guide on how to get a home loan in India in 2025. Learn about eligibility, documents, process, and tips to improve approval chances.",
-  image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  image: "https://plus.unsplash.com/premium_photo-1661919589683-f11880119fb7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   
+},
+{
+  title: "Home Loan in Panvel: Best Housing Finance Options in 2025",
+  slug: "home-loan-in-panvel",
+  date: "July 2025",
+  description: "Looking for a home loan in Panvel? Discover the best housing finance options, eligibility, top banks, and how to apply easily in 2025 with Fincopx.",
+  image: "https://images.unsplash.com/photo-1648197685224-18c96a8d116d?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 }
+
 
 
   
